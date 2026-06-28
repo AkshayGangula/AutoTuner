@@ -1,0 +1,38 @@
+# Experiment outputs (full runs live on scratch or Zenodo)
+data/experiments/
+auto_tuning_experiments/
+
+# Site-specific HPC credentials / partitions
+config/hpc_config.json
+
+# Logs and caches
+*.log
+master_tuner.log
+likwid_output/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.pyc
+
+# Profiling / LIKWID scratch
+likwid_output/
+*.sqlite-journal
+
+# Build artifacts
+applications/**/build/
+applications/**/*.o
+applications/**/hybrid_vec_gpu
+applications/**/sparse_application
+applications/**/lulesh2.0
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# SLURM / cluster scratch copies
+slurm-submit/
+
+# Local export snapshots (zip for GitHub / Zenodo; not committed)
+github_export/
+zenodo_export/

@@ -1,0 +1,30 @@
+# MPI+OpenMP Auto-Tuning Framework Requirements
+# Core dependencies for the heuristic scoring and automation system
+
+# Core scientific computing
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+
+# MPI support
+mpi4py>=3.1.0
+
+# Visualization and analysis
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Database and data processing
+# sqlite3 is built-in with Python 3.x
+
+# Configuration and serialization
+pyyaml>=5.4.0
+# configparser is built-in with Python 3.x
+
+# Logging and monitoring
+colorlog>=6.6.0
+
+# Optional: GPU profiling support
+# nvidia-ml-py>=11.0.0  # Uncomment if using NVIDIA GPUs
+
+# Optional: Advanced hardware detection
+# py-cpuinfo>=7.0.0  # Uncomment for detailed CPU information

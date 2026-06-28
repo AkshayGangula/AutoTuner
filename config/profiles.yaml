@@ -1,0 +1,83 @@
+# Application Profiles for Auto-Tuner
+# Each profile auto-configures the heuristic scorer for different workload types
+
+sparse_matrix:
+  name: "Sparse Matrix Kernels"
+  description: "Irregular memory access patterns, MPI communication dominated"
+  cpu_only: true
+  enable_locality: true
+  recommended_for:
+    - "SpMV (Sparse Matrix-Vector Multiply)"
+    - "Sparse triangular solve"
+    - "Graph algorithms"
+    - "Irregular data structures"
+  primary_metrics:
+    - "Communication efficiency (α)"
+    - "Thread efficiency (β)"
+  notes: |
+    Sparse workloads have irregular memory access patterns that make
+    locality optimization difficult. MPI communication and load balancing
+    are the primary bottlenecks.
+
+hybrid_vec:
+  name: "Hybrid CPU+GPU vector (CUDA SAXPY)"
+  description: "MPI + OpenMP host work + 1D GPU SAXPY"
+  cpu_only: false
+  enable_locality: true
+  recommended_for:
+    - "GPU autotuning smoke tests (vector / SAXPY path)"
+    - "PCIe + multi-rank GPU contention studies"
+  primary_metrics:
+    - "Communication efficiency (α)"
+    - "Thread efficiency (β)"
+    - "Memory locality (γ)"
+    - "GPU utilization (δ)"
+  notes: |
+    Uses applications/HybridVec/hybrid_vec_gpu; stdout HYBRID_VEC_GPU line for Phase-1 parsing.
+    Rebuild with -DUSE_NVTX and link nvToolsExt for instrumented ε (NVTX ranges); default trace includes nvtx.
+
+lulesh:
+  name: "LULESH 2.x"
+  description: "MPI+OpenMP structured mesh hydrodynamics"
+  cpu_only: true
+  enable_locality: true
+  recommended_for:
+    - "LULESH 2.0 ref build"
+    - "Structured mesh strong/weak scaling"
+  primary_metrics:
+    - "Communication efficiency (α)"
+    - "Thread efficiency (β)"
+    - "Memory locality (γ)"
+  notes: |
+    CPU-only profile by default; throughput derived from mesh size in job scripts.
+
+minimd:
+  name: "Mantevo miniMD"
+  description: "MPI+OpenMP Lennard-Jones / EAM MD (Mantevo benchmark)"
+  cpu_only: false
+  enable_locality: true
+  recommended_for:
+    - "miniMD ref or target build"
+    - "Weak-scaling MD studies"
+    - "MPI×OpenMP tuning for particle codes"
+  primary_metrics:
+    - "Communication efficiency (α)"
+    - "Thread efficiency (β)"
+    - "Memory locality (γ)"
+    - "GPU utilization (δ) - if GPU/offload build"
+  notes: |
+    miniMD is a compact MD kernel; communication and neighbor lists dominate
+    at scale. Use this profile for miniMD experiments only (not generic MD apps).
+
+custom:
+  name: "Custom Workload"
+  description: "User-defined configuration"
+  cpu_only: false
+  enable_locality: false
+  recommended_for:
+    - "Any workload not matching predefined profiles"
+  primary_metrics:
+    - "All metrics available, user configures via flags"
+  notes: |
+    Use this profile when your workload doesn't match any predefined
+    category. Configure metrics manually using --cpu-only and --enable-likwid flags.

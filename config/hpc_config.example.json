@@ -1,0 +1,84 @@
+{
+    "_comment": "HPC System Configuration File. Copy to config/hpc_config.json (gitignored) or ~/.config/autotuner/hpc_config.json",
+    "_usage": "Define your HPC systems here. The 'system' name you pass to master_tuner.py should match a key in 'systems'.",
+    "systems": {
+        "default": {
+            "partition": "normal",
+            "qos": null,
+            "max_nodes": 100,
+            "max_time": "48:00:00",
+            "modules": [],
+            "features": [],
+            "gpu_partition": "gpu"
+        },
+        "example-hpc-gpu": {
+            "_comment": "Example GPU partition — replace partition name, modules, and scratch paths for your facility",
+            "partition": "gpu_a100",
+            "qos": null,
+            "max_nodes": 4,
+            "max_time": "24:00:00",
+            "modules": [
+                "gcc/11.2.0",
+                "mvapich2/2.3.7",
+                "python3/3.9",
+                "cuda/11.8"
+            ],
+            "features": [],
+            "launcher": "mpirun",
+            "mpip_mvapich_srun": true,
+            "srun_mpi_flag": "--mpi=pmi2",
+            "gres_gpu": true,
+            "gpu_gres_count": null,
+            "slurm_log_dir": "/scratch/%u",
+            "artifact_dir": "/scratch/%u/autotuner-data",
+            "submit_chdir": "/scratch/%u/autotuner-submit",
+            "sbatch_exclude": null
+        },
+        "example-hpc-cpu": {
+            "_comment": "Example CPU partition — mpiP Run 1a uses srun + LD_PRELOAD when mpip_mvapich_srun is true",
+            "partition": "cpu_shared",
+            "qos": null,
+            "max_nodes": 100,
+            "max_time": "48:00:00",
+            "modules": [
+                "gcc/11.2.0",
+                "mvapich2/2.3.7",
+                "python3/3.9"
+            ],
+            "features": [],
+            "launcher": "mpirun",
+            "mpip_mvapich_srun": true,
+            "srun_mpi_flag": "--mpi=pmi2"
+        },
+        "example_system": {
+            "_comment": "Minimal template — modify for your cluster",
+            "partition": "standard",
+            "qos": "normal",
+            "max_nodes": 100,
+            "max_time": "24:00:00",
+            "modules": [
+                "gcc",
+                "openmpi",
+                "cuda"
+            ],
+            "features": [
+                "gpu"
+            ],
+            "gpu_partition": "gpu",
+            "gpu_type": "A100",
+            "gpus_per_node": 4
+        }
+    },
+    "_environment_variables": {
+        "_comment": "You can also set these environment variables instead of using a config file",
+        "HPC_PARTITION": "The default partition name",
+        "HPC_QOS": "Quality of Service (optional)",
+        "HPC_MODULES": "Comma-separated list of modules to load",
+        "HPC_GPU_PARTITION": "GPU partition name (optional)",
+        "HPC_ACCOUNT": "Your allocation account",
+        "SLURM_ACCOUNT": "Alternative for allocation account",
+        "HPC_LAUNCHER": "Override launcher (e.g. mpirun) — merged into SlurmManager system_config",
+        "HPC_MPIP_MVAPICH_SRUN": "Override MVAPICH mpiP Run-1a srun path: 1/true/yes or 0/false/no",
+        "HPC_SRUN_MPI_FLAG": "Extra srun flag for mpiP preload (e.g. --mpi=pmi2) — overrides hpc_config when set"
+    }
+}

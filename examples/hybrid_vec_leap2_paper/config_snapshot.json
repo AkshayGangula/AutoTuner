@@ -1,0 +1,9 @@
+{
+  "application": "hybrid_vec",
+  "application_profile": "hybrid_vec",
+  "system": "example-hpc-gpu",
+  "partition": "gpu_a100",
+  "executable": "/scratch/<user>/autotuner-bin/hybrid_vec_gpu",
+  "experiment_id": "hybrid_vec_1779069421",
+  "notes": "Example GPU campaign snapshot; fastest 1x48, best heuristic ~2x24. Copy hpc_config.example.json to config/hpc_config.json and match modules before reproducing."
+}

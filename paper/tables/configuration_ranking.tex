@@ -1,0 +1,17 @@
+% AutoTuner hybrid_vec LEAP2 example (from comprehensive_results/results.json)
+% Regenerate: copy from paper/tables/results.json or re-run generate_results.py
+\begin{table}[t]
+  \centering
+  \caption{HybridVec configurations on LEAP2 (48 cores, 1 node). Runtime rank vs heuristic rank.}
+  \label{tab:hybrid-vec-leap2}
+  \begin{tabular}{lrrrrr}
+    \hline
+    Config & Runtime (s) & GFLOPS & $H_{10}$ & Heur.\ rank & Runtime rank \\
+    \hline
+    1$\times$48  & 0.0061 & 51.94 & 4.23 & 4 & 1 \\
+    2$\times$24  & 1.4693 & 0.21  & 6.56 & 1 & 2 \\
+    4$\times$12  & 2.9481 & 0.11  & 6.19 & 2 & 3 \\
+    16$\times$3  & 19.5770 & 0.02 & 5.23 & 3 & 4 \\
+    \hline
+  \end{tabular}
+\end{table}
