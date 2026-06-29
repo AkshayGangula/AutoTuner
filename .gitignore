@@ -1,4 +1,4 @@
-# Experiment outputs (full runs live on scratch or Zenodo)
+# Experiment outputs (full runs live on Zenodo)
 data/experiments/
 auto_tuning_experiments/
 
@@ -32,7 +32,3 @@ applications/**/lulesh2.0
 
 # SLURM / cluster scratch copies
 slurm-submit/
-
-# Local export snapshots (zip for GitHub / Zenodo; not committed)
-github_export/
-zenodo_export/
