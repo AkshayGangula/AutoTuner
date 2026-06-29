@@ -56,7 +56,9 @@ Trust **`comprehensive_results/results.json`** for final rankings (not interim `
 
 ## Data
 
-Full experiment trees are **not** stored in git. Download the Zenodo dataset archive and place campaigns under `data/experiments/`, or request raw traces from the corresponding author.
+Full experiment trees are **not** stored in git. Download the Zenodo dataset and unpack campaigns under `data/experiments/`:
+
+**Zenodo:** https://doi.org/10.5281/zenodo.21015887
 
 See `data/README.md` for layout and campaign identifiers from the manuscript.
 
@@ -78,7 +80,15 @@ See `data/README.md` for layout and campaign identifiers from the manuscript.
   title  = {AutoTuner: Measurement Fusion for MPI--OpenMP--GPU Layout Selection on SLURM},
   author = {Gangula, Akshay Reddy},
   year   = {2026},
-  url    = {https://github.com/akshaygangula/AutoTuner}
+  url    = {https://github.com/AkshayGangula/AutoTuner}
+}
+
+@dataset{autotuner_data2026,
+  title  = {AutoTuner HPC experiment dataset},
+  author = {Gangula, Akshay Reddy},
+  year   = {2026},
+  doi    = {10.5281/zenodo.21015887},
+  url    = {https://doi.org/10.5281/zenodo.21015887}
 }
 ```
 

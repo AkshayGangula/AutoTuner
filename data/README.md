@@ -4,7 +4,11 @@ Full auto-tuning runs are **not** committed to this repository.
 
 ## Zenodo archive
 
-Download the HPC campaign dataset from Zenodo (see the Data availability statement in the manuscript or the repository root README). Unpack so each campaign appears as:
+Download the HPC campaign dataset from Zenodo:
+
+**https://doi.org/10.5281/zenodo.21015887**
+
+Unpack so each campaign appears as:
 
 ```
 data/experiments/<application>_<timestamp>/
